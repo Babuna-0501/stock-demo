@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Payment.css';
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
-import { getBasketTotal } from "./reducer";
-import axios from './axios';
-import { db } from "./firebase";
+import { getBasketTotal } from "../reducer";
+import axios from '../axios';
+import { db } from "../firebase";
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -99,8 +99,8 @@ function Payment() {
                     </div>
                     <div className='payment__address'>
                         <p>{user?.email}</p>
-                        <p>123 React Lane</p>
-                        <p>Los Angeles, CA</p>
+                        <p>MN tower</p>
+                        <p>Ulaanbaatar, Mongolia</p>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@ function Payment() {
                             <CheckoutProduct
                                 id={item.id}
                                 title={item.title}
-                                image={item.image}
+                                preview={item.preview}
                                 price={item.price}
                                 rating={item.rating}
                             />

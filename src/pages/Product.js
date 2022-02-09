@@ -1,16 +1,33 @@
 import React from "react";
 import "./Product.css";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import StarIcon from '@material-ui/icons/Star';
 import FolderIcon from '@material-ui/icons/Folder';
 
 function Product({ id, title, image, price, rating, preview, fresh, creator}) {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, collect }, dispatch] = useStateValue();
+  // const [{ collect }, dispatch] = useStateValue();
   const addToBasket = () => {
     // dispatch the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+        preview: preview,
+        fresh: fresh,
+        creator: creator,
+      }, 
+    });
+  };
+  const addToCollect = () => {
+    // dispatch the item into the data layer
+    dispatch({
+      type: "ADD_TO_COLLECT",
       item: {
         id: id,
         title: title,
@@ -49,7 +66,7 @@ function Product({ id, title, image, price, rating, preview, fresh, creator}) {
       </video>
 
       <button onClick={addToBasket} className="btn-basket"> <ShoppingBasketIcon /></button>
-      <button onClick={addToBasket} className="btn-star"> <StarIcon/></button>
+      <button onClick={addToCollect} className="btn-star"> <StarIcon/></button>
       <button onClick={addToBasket} className="btn-folder"> <FolderIcon/></button>
       {/* <div className="creater">{creator}</div> */}
     </div>

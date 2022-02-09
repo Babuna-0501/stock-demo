@@ -2,14 +2,21 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "./Product";
-import video from "./assets/Arches_National_Park_with_Milky_Way (1).mp4";
-import Search from "./component/search/search";
+import video from "../assets/Arches_National_Park_with_Milky_Way (1).mp4";
+import Search from "../component/search/search";
 
 
 
 
 function Home() {
 
+  // const subscribe = () => {
+  //   // subscribe
+  //   dispatch({
+  //       type: 'subscribe',
+  //       id: id,
+  //   })
+  // }  
   const fixedText = "";
   const whenNotFixed = "";
   const [sidenavText, setsidenavText] = useState(whenNotFixed);
@@ -57,6 +64,7 @@ function Home() {
                   <li>Collections</li>
                   <li>Filmers</li>
                 </ul>
+                <button className="subscribe-btn">Subscribe</button>
               </sidenav>
             </div>
             <div>         
